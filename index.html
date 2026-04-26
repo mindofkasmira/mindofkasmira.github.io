@@ -16,7 +16,6 @@ html{scroll-behavior:smooth}
   --gold-deep:#B8941A;
   --emerald:#017F75;
   --emerald-deep:#015F5E;
-  --violet:#9C6ACF;
   --ink:#1A1208;
   --text:#2C1E08;
   --text-soft:#5A4A2A;
@@ -28,11 +27,11 @@ body{background:var(--ivory);color:var(--text);font-family:'Lato',sans-serif;fon
 ::-webkit-scrollbar-thumb{background:var(--gold)}
 
 /* NAV */
-nav{position:fixed;top:0;width:100%;z-index:999;padding:22px 56px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s ease}
-nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);padding:14px 56px;box-shadow:0 2px 40px rgba(44,30,8,0.06);border-bottom:1px solid rgba(212,175,55,0.2)}
-.nav-logo{text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:1px}
-.nav-logo-script{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1rem;color:var(–gold);letter-spacing:0.06em}
-.nav-logo-name{font-family:‘Cinzel’,serif;font-size:1.1rem;font-weight:700;color:var(–emerald);letter-spacing:0.2em}
+nav{position:fixed;top:0;width:100%;z-index:999;padding:16px 56px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s ease}
+nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);padding:12px 56px;box-shadow:0 2px 40px rgba(44,30,8,0.06);border-bottom:1px solid rgba(212,175,55,0.2)}
+.nav-logo{text-decoration:none;display:flex;align-items:center}
+.nav-logo img{height:56px;width:56px;object-fit:contain;transition:height 0.4s ease}
+nav.scrolled .nav-logo img{height:44px;width:44px}
 .nav-links{display:flex;gap:40px;list-style:none}
 .nav-links a{font-family:‘Cinzel’,serif;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(–text-soft);text-decoration:none;transition:color 0.3s;position:relative}
 .nav-links a::after{content:’’;position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(–gold);transition:width 0.3s}
@@ -45,7 +44,7 @@ nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);paddin
 /* HERO */
 .hero-painting{position:relative;height:100vh;overflow:hidden}
 .hero-painting img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.hero-painting::after{content:’’;position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,246,240,0.1) 0%,transparent 30%,transparent 55%,rgba(249,246,240,0.6) 80%,rgba(249,246,240,1) 100%)}
+.hero-painting::after{content:’’;position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,246,240,0.05) 0%,transparent 20%,transparent 55%,rgba(249,246,240,0.6) 80%,rgba(249,246,240,1) 100%)}
 .hero-text{position:absolute;bottom:60px;left:56px;right:56px;z-index:2}
 .hero-painting-title{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1rem;color:var(–text-muted);letter-spacing:0.22em;margin-bottom:8px;opacity:0;animation:rise 1s ease 1.5s forwards}
 .hero-name{font-family:‘Cinzel’,serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:700;letter-spacing:0.1em;line-height:1;background:linear-gradient(135deg,var(–gold) 0%,var(–gold-deep) 50%,var(–gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:rise 1.2s ease 0.6s forwards}
@@ -61,6 +60,8 @@ nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);paddin
 .paint-label{position:absolute;bottom:0;left:0;right:0;padding:40px 56px;background:linear-gradient(to top,rgba(249,246,240,1) 0%,rgba(249,246,240,0.7) 40%,transparent 100%)}
 .p-title{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:clamp(1.6rem,3.5vw,2.8rem);color:var(–text);letter-spacing:0.04em}
 .p-meta{font-size:0.6rem;letter-spacing:0.35em;color:var(–gold);text-transform:uppercase;margin-top:4px}
+.p-link{display:inline-block;margin-top:10px;font-family:‘Cinzel’,serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(–emerald);text-decoration:none;border-bottom:1px solid var(–emerald);padding-bottom:2px;transition:all 0.3s}
+.p-link:hover{color:var(–gold);border-bottom-color:var(–gold)}
 
 .paint-duo{display:grid;grid-template-columns:1fr 1fr}
 .duo-cell{position:relative;height:75vh;overflow:hidden}
@@ -88,8 +89,8 @@ nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);paddin
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
-.about-portrait{aspect-ratio:3/4;background:linear-gradient(160deg,var(–ivory-mid),#E8DFC8);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(212,175,55,0.2)}
-.portrait-note{font-family:‘Cormorant Garamond’,serif;font-style:italic;color:var(–text-muted);font-size:0.85rem;letter-spacing:0.1em;text-align:center;line-height:1.8;padding:20px}
+.about-portrait{aspect-ratio:3/4;overflow:hidden;position:relative;border:1px solid rgba(212,175,55,0.2)}
+.about-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .frame-tl,.frame-br{position:absolute;width:44px;height:44px;pointer-events:none}
 .frame-tl{top:-10px;left:-10px;border-top:1.5px solid var(–gold);border-left:1.5px solid var(–gold);opacity:0.6}
 .frame-br{bottom:-10px;right:-10px;border-bottom:1.5px solid var(–emerald);border-right:1.5px solid var(–emerald);opacity:0.5}
@@ -103,7 +104,7 @@ nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);paddin
 .pillar-icon{color:var(–gold);font-size:1rem;transition:transform 0.3s}
 .pillar.open .pillar-icon{transform:rotate(45deg)}
 .pillar-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
-.pillar.open .pillar-body{max-height:140px;padding-top:10px}
+.pillar.open .pillar-body{max-height:160px;padding-top:10px}
 .pillar-body p{font-family:‘Cormorant Garamond’,serif;font-size:1rem;line-height:1.75;color:var(–text-muted)}
 .about-btns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
 
@@ -132,7 +133,7 @@ nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);paddin
 .t-card.fertile{border-top-color:#3949AB}.t-card.fertile .t-chakra{color:#3949AB;background:rgba(57,73,171,0.08)}
 .t-card.yadira{border-top-color:#8E24AA}.t-card.yadira .t-chakra{color:#8E24AA;background:rgba(142,36,170,0.08)}
 
-/* SHOP */
+/* SHOP — DIGITAL PRINTS */
 .shop-feature{background:linear-gradient(135deg,var(–emerald) 0%,var(–emerald-deep) 100%);padding:52px 60px;display:flex;align-items:center;gap:40px;margin-bottom:3px;position:relative;overflow:hidden}
 .shop-feature::before{content:’’;position:absolute;top:-40%;right:-5%;width:300px;height:300px;background:radial-gradient(ellipse,rgba(212,175,55,0.12),transparent 70%);border-radius:50%}
 .shop-badge{width:72px;height:72px;border-radius:50%;background:var(–gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;z-index:1}
@@ -140,12 +141,37 @@ nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);paddin
 .shop-text h3{font-family:‘Cinzel’,serif;font-size:0.68rem;letter-spacing:0.24em;color:var(–gold);text-transform:uppercase;margin-bottom:8px}
 .shop-text p{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1.1rem;line-height:1.7;color:rgba(249,246,240,0.8);margin-bottom:18px}
 .shop-url{font-family:‘Cinzel’,serif;font-size:0.7rem;letter-spacing:0.14em;color:var(–gold);background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.35);padding:8px 18px;display:inline-block}
-.shop-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
-.shop-tile{padding:44px 28px 36px;background:var(–ivory-mid);text-align:center;text-decoration:none;color:inherit;border-bottom:2px solid transparent;transition:all 0.35s;display:block}
-.shop-tile:hover{background:white;border-bottom-color:var(–gold);transform:translateY(-4px);box-shadow:0 16px 40px rgba(44,30,8,0.07)}
-.shop-tile-icon{font-size:1.8rem;display:block;margin-bottom:16px}
-.shop-tile h3{font-family:‘Cinzel’,serif;font-size:0.65rem;letter-spacing:0.18em;color:var(–emerald);margin-bottom:10px;text-transform:uppercase}
-.shop-tile p{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.92rem;color:var(–text-muted);line-height:1.7}
+
+/* PRODUCTS GRID — AOW */
+.products-section{padding:80px 56px;background:var(–ivory-mid)}
+.products-section .section-wrap{max-width:1100px;margin:0 auto}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:40px}
+.product-card{background:white;overflow:hidden;transition:all 0.35s;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(44,30,8,0.1)}
+.product-img{position:relative;aspect-ratio:1;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
+.product-card:hover .product-img img{transform:scale(1.05)}
+.product-info{padding:20px;flex:1;display:flex;flex-direction:column;justify-content:space-between;border-top:1px solid rgba(212,175,55,0.15)}
+.product-name{font-family:‘Cinzel’,serif;font-size:0.65rem;letter-spacing:0.14em;color:var(–emerald);text-transform:uppercase;margin-bottom:4px}
+.product-desc{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.88rem;color:var(–text-muted);line-height:1.5;margin-bottom:12px}
+.product-price{font-family:‘Cinzel’,serif;font-size:0.7rem;letter-spacing:0.1em;color:var(–gold-deep);margin-bottom:12px}
+.product-btn{display:block;text-align:center;padding:10px;background:transparent;border:1px solid var(–emerald);color:var(–emerald);font-family:‘Cinzel’,serif;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
+.product-btn:hover{background:var(–emerald);color:white}
+.originals-note{text-align:center;margin-top:40px;padding:32px;background:var(–ivory);border:1px solid rgba(212,175,55,0.2)}
+.originals-note p{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1.1rem;color:var(–text-soft);margin-bottom:16px}
+
+/* NEWSLETTER */
+.newsletter-section{background:var(–emerald-deep);padding:80px 56px;text-align:center;position:relative;overflow:hidden}
+.newsletter-section::before{content:’’;position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,175,55,0.08),transparent 60%),radial-gradient(ellipse at 70% 30%,rgba(212,175,55,0.06),transparent 50%)}
+.newsletter-section .eyebrow{color:rgba(212,175,55,0.8)}
+.newsletter-section .section-title{color:white}
+.newsletter-body{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1.15rem;color:rgba(249,246,240,0.65);max-width:520px;margin:0 auto 36px;line-height:1.85;position:relative;z-index:1}
+.newsletter-form{display:flex;gap:0;max-width:480px;margin:0 auto;position:relative;z-index:1}
+.newsletter-input{flex:1;padding:16px 22px;background:rgba(249,246,240,0.08);border:1px solid rgba(212,175,55,0.3);border-right:none;font-family:‘Cormorant Garamond’,serif;font-size:1rem;color:white;outline:none}
+.newsletter-input::placeholder{color:rgba(249,246,240,0.35)}
+.newsletter-btn{padding:16px 28px;background:var(–gold);color:var(–ink);font-family:‘Cinzel’,serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;white-space:nowrap}
+.newsletter-btn:hover{background:var(–gold-deep)}
+.newsletter-note{margin-top:14px;font-size:0.62rem;letter-spacing:0.2em;color:rgba(249,246,240,0.3);font-family:‘Lato’,sans-serif;text-transform:uppercase;position:relative;z-index:1}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
@@ -177,8 +203,7 @@ nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);paddin
 /* FOOTER */
 footer{background:var(–ink);padding:56px 56px 36px}
 .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(249,246,240,0.06)}
-.footer-script{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1rem;color:var(–gold);display:block}
-.footer-name{font-family:‘Cinzel’,serif;font-size:1.1rem;font-weight:700;letter-spacing:0.18em;color:white;display:block;margin-bottom:8px}
+.footer-logo img{height:60px;width:60px;object-fit:contain;margin-bottom:10px;display:block}
 .footer-tagline{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.82rem;letter-spacing:0.18em;color:rgba(249,246,240,0.25)}
 .footer-col h4{font-family:‘Cinzel’,serif;font-size:0.58rem;letter-spacing:0.24em;color:var(–gold);text-transform:uppercase;margin-bottom:18px}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -197,10 +222,10 @@ footer{background:var(–ink);padding:56px 56px 36px}
 
 /* RESPONSIVE */
 @media(max-width:1000px){
-nav{padding:18px 28px}
-nav.scrolled{padding:12px 28px}
+nav{padding:14px 28px}
+nav.scrolled{padding:10px 28px}
 .nav-links{display:none}
-.section{padding:80px 28px}
+.section,.products-section,.newsletter-section{padding:80px 28px}
 .hero-text{left:28px;right:28px}
 .scroll-cue{right:28px}
 .about-grid,.poetry-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
@@ -208,17 +233,19 @@ nav.scrolled{padding:12px 28px}
 .paint-duo{grid-template-columns:1fr}
 .duo-cell{height:60vh}
 .paint-grid{grid-template-columns:1fr 1fr}
-.shop-tiles{grid-template-columns:1fr 1fr}
+.products-grid{grid-template-columns:1fr 1fr}
 .footer-inner{grid-template-columns:1fr}
 .shop-feature{flex-direction:column;text-align:center;padding:40px 28px}
 .f-row{grid-template-columns:1fr}
 .paint-label{padding:28px}
 .shop-cta{padding:48px 28px}
+.newsletter-form{flex-direction:column}
+.newsletter-input{border-right:1px solid rgba(212,175,55,0.3);border-bottom:none}
 }
 @media(max-width:600px){
 .paint-grid{grid-template-columns:1fr}
 .turtle-grid{grid-template-columns:repeat(2,1fr)}
-.shop-tiles{grid-template-columns:1fr}
+.products-grid{grid-template-columns:1fr}
 .hero-name{font-size:2.2rem}
 footer{padding:44px 28px 28px}
 }
@@ -231,12 +258,12 @@ footer{padding:44px 28px 28px}
 
 <nav id="nav">
   <a class="nav-logo" href="#home">
-    <span class="nav-logo-script">Mind of</span>
-    <span class="nav-logo-name">KASMIRA</span>
+    <img src="https://drive.google.com/thumbnail?id=168l3grl3BeIeipbgAAEpTXbxKdYBQoSL&sz=w200" alt="Mind of Kasmira"/>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#poetry">Poetry Vault</a></li>
+    <li><a href="#goods">Goods</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://shop.kasmiratheartist.com" target="_blank" class="nav-shop">Shop</a></li>
   </ul>
@@ -267,7 +294,8 @@ footer{padding:44px 28px 28px}
     <img src="https://drive.google.com/thumbnail?id=1scQv4EPjTp28KUvg9a3fEM4G5HgcWMKT&sz=w1600" alt="Intuition"/>
     <div class="paint-label">
       <div class="p-title">Intuition</div>
-      <div class="p-meta">Original Painting · Available as Print</div>
+      <div class="p-meta">Original Painting</div>
+      <a href="https://shop.kasmiratheartist.com/l/ikbxws?layout=profile" target="_blank" class="p-link">Shop Print →</a>
     </div>
   </div>
 
@@ -300,38 +328,58 @@ footer{padding:44px 28px 28px}
     <img src="https://drive.google.com/thumbnail?id=1rYRbONOVEGUL0etI43tMX6Va6iT9y-NK&sz=w1600" alt="Love Makes the World Go Round"/>
     <div class="paint-label">
       <div class="p-title">Love Makes the World Go Round</div>
-      <div class="p-meta">Original Painting · Available as Print</div>
+      <div class="p-meta">Original Painting</div>
     </div>
   </div>
 
   <div class="gold-divider"></div>
 
-  <!-- Grid: 6 paintings -->
+  <!-- Grid -->
 
   <div class="paint-grid">
     <div class="grid-cell reveal rd1">
       <img src="https://drive.google.com/thumbnail?id=1woL1VNyiZ0ItIkLgJNXPtCXqxrnl84WY&sz=w800" alt="Community"/>
-      <div class="paint-label"><div class="p-title">Community</div><div class="p-meta">Original Painting</div></div>
+      <div class="paint-label">
+        <div class="p-title">Community</div>
+        <div class="p-meta">Original Painting</div>
+      </div>
     </div>
     <div class="grid-cell reveal rd2">
       <img src="https://drive.google.com/thumbnail?id=1h1AIYyuvfHNl-OctRl-3fm-wXGZ_Um28&sz=w800" alt="Breathe"/>
-      <div class="paint-label"><div class="p-title">Breathe</div><div class="p-meta">Original Painting</div></div>
+      <div class="paint-label">
+        <div class="p-title">Breathe</div>
+        <div class="p-meta">Original Painting</div>
+      </div>
     </div>
     <div class="grid-cell reveal rd3">
       <img src="https://drive.google.com/thumbnail?id=1p-fpzVndOyD46Z3pvE-6W6LsHZ_7YQeX&sz=w800" alt="Bloom"/>
-      <div class="paint-label"><div class="p-title">Bloom</div><div class="p-meta">Original Painting · Available as Print</div></div>
+      <div class="paint-label">
+        <div class="p-title">Bloom</div>
+        <div class="p-meta">Original Painting</div>
+        <a href="https://shop.kasmiratheartist.com/l/BloomArtPrint-KAsmiraTheArtistMoK?layout=profile" target="_blank" class="p-link">Shop Print →</a>
+      </div>
     </div>
     <div class="grid-cell reveal rd4">
       <img src="https://drive.google.com/thumbnail?id=1uYE3sGYP9IjSkJtPKVcSTWVs4kuLp3cZ&sz=w800" alt="Grounded"/>
-      <div class="paint-label"><div class="p-title">Grounded</div><div class="p-meta">Original Painting</div></div>
+      <div class="paint-label">
+        <div class="p-title">Grounded</div>
+        <div class="p-meta">Original Painting</div>
+      </div>
     </div>
     <div class="grid-cell reveal rd5">
       <img src="https://drive.google.com/thumbnail?id=1O458Joxo0DWwUCCq1wy41P37pcRmjzbO&sz=w800" alt="Evergreen"/>
-      <div class="paint-label"><div class="p-title">Evergreen</div><div class="p-meta">Original Painting · Available as Print</div></div>
+      <div class="paint-label">
+        <div class="p-title">Evergreen</div>
+        <div class="p-meta">Original Painting</div>
+        <a href="https://shop.kasmiratheartist.com/l/EvergreenArtPrint-KasmiraTheArtistMoK?layout=profile" target="_blank" class="p-link">Shop Print →</a>
+      </div>
     </div>
     <div class="grid-cell reveal rd6">
       <img src="https://drive.google.com/thumbnail?id=1ogpaewP88VwCPustnXOL6UyPoXlWijjQ&sz=w800" alt="Humpty Dumpty"/>
-      <div class="paint-label"><div class="p-title">Humpty Dumpty</div><div class="p-meta">Original Painting</div></div>
+      <div class="paint-label">
+        <div class="p-title">Humpty Dumpty</div>
+        <div class="p-meta">Original Painting</div>
+      </div>
     </div>
   </div>
 
@@ -352,7 +400,7 @@ footer{padding:44px 28px 28px}
     <div class="about-grid">
       <div style="position:relative" class="reveal">
         <div class="about-portrait">
-          <img src="https://drive.google.com/thumbnail?id=1t6QXYlWzbC1_-hTYfZnJsxjhFAhFzY9Q&sz=w800" alt="Kasmira Seymour" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"/>
+          <img src="https://drive.google.com/thumbnail?id=1t6QXYlWzbC1_-hTYfZnJsxjhFAhFzY9Q&sz=w800" alt="Kasmira Seymour"/>
         </div>
         <div class="frame-tl"></div>
         <div class="frame-br"></div>
@@ -365,15 +413,15 @@ footer{padding:44px 28px 28px}
         <p class="about-lead">Visual artist, poet, and educator creating work rooted in <em>healing, resilience, and light</em>. Based in Wilmington, Delaware. Available for art licensing, commissions, workshops, and brand partnerships.</p>
         <div class="pillar open" onclick="togglePillar(this)">
           <div class="pillar-head"><span class="pillar-name">The Art</span><span class="pillar-icon">+</span></div>
-          <div class="pillar-body"><p>Original paintings in watercolor, acrylic, and oil — available as instant digital downloads. Print and hang in minutes.</p></div>
+          <div class="pillar-body"><p>Working across watercolor, acrylic, oil painting, and clay, each body of work unfolds from a sustained inquiry into healing, identity, and what it means to be fully human, returning to self.</p></div>
         </div>
         <div class="pillar" onclick="togglePillar(this)">
-          <div class="pillar-head"><span class="pillar-name">The Teaching</span><span class="pillar-icon">+</span></div>
-          <div class="pillar-body"><p>15+ years as a teaching artist serving schools, institutions, and communities through healing-centered creative experiences.</p></div>
+          <div class="pillar-head"><span class="pillar-name">The Practice</span><span class="pillar-icon">+</span></div>
+          <div class="pillar-body"><p>Original paintings available as instant digital downloads — museum-quality files, print and hang in minutes. Originals available upon request.</p></div>
         </div>
         <div class="pillar" onclick="togglePillar(this)">
           <div class="pillar-head"><span class="pillar-name">The Strategy</span><span class="pillar-icon">+</span></div>
-          <div class="pillar-body"><p>Storytelling for brands, institutions, and changemakers — where creative vision meets purposeful collaboration.</p></div>
+          <div class="pillar-body"><p>Storytelling for brands, institutions, and changemakers — where creative vision meets purposeful collaboration. State recognized and available for licensing, residencies, exhibitions, and brand partnerships.</p></div>
         </div>
         <div class="about-btns">
           <a href="#contact" class="btn-primary">Work With Me</a>
@@ -393,7 +441,7 @@ footer{padding:44px 28px 28px}
         <span class="eyebrow">The Voice</span>
         <h2 class="section-title">A Letter to<br/>the Universe</h2>
         <div class="gold-rule"></div>
-        <p class="poetry-body"><em>Poetry Vault — Season Two</em> is live. Seven turtle archetypes, seven chakras, one invitation to come home to yourself.</p>
+        <p class="poetry-body"><em>Poetry Vault — Season Two</em> is live. Seven turtle archetypes, seven chakras, one invitation to come home to yourself. A portal into the interior landscape of healing through the written word.</p>
         <div class="platform-row">
           <a href="https://kasmiratheartist.substack.com" target="_blank" class="pill">Substack</a>
           <a href="#" class="pill">Spotify</a>
@@ -432,38 +480,144 @@ footer{padding:44px 28px 28px}
   </div>
 </section>
 
-<!-- SHOP -->
+<!-- GOODS — AOW PRODUCTS -->
 
-<section id="shop" class="section" style="background:var(--ivory-mid)">
+<section id="goods" class="products-section">
   <div class="section-wrap">
-    <span class="eyebrow reveal">The Shop</span>
-    <h2 class="section-title reveal rd1">Own a Piece<br/>of the Work</h2>
-    <div class="shop-feature reveal rd2">
-      <div class="shop-badge">🛍</div>
-      <div class="shop-text">
-        <h3>Digital Art Prints — Available Now</h3>
-        <p>Museum-quality digital downloads of original paintings. Instant access. Every purchase supports a living artist with a mission.</p>
-        <span class="shop-url">shop.kasmiratheartist.com</span>
+    <span class="eyebrow reveal">Wearables & Goods</span>
+    <h2 class="section-title reveal rd1">Wear the Work</h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--text-muted);margin-top:12px;line-height:1.8" class="reveal rd2">Original paintings on premium quality goods — made on demand, shipped to you.</p>
+
+```
+<div class="products-grid">
+  <!-- In the Cracks Hoodie -->
+  <div class="product-card reveal rd1">
+    <div class="product-img">
+      <img src="https://drive.google.com/thumbnail?id=1pctVfDUoYOOSpToIBM0mOSEJaEU9-hE4&sz=w600" alt="In The Cracks Hoodie"/>
+    </div>
+    <div class="product-info">
+      <div>
+        <div class="product-name">In The Cracks Hoodie</div>
+        <div class="product-desc">Premium pullover hoodie</div>
+        <div class="product-price">$55</div>
       </div>
-      <a href="https://shop.kasmiratheartist.com" target="_blank" class="btn-gold" style="flex-shrink:0;white-space:nowrap">Visit the Shop</a>
+      <a href="mailto:info@kasmiratheartist.com?subject=Inquire: In The Cracks Hoodie" class="product-btn">Inquire to Order</a>
     </div>
-    <div class="shop-tiles">
-      <a href="mailto:info@kasmiratheartist.com" class="shop-tile reveal rd1">
-        <span class="shop-tile-icon">✦</span>
-        <h3>Commission</h3>
-        <p>Custom paintings & creative partnerships</p>
-      </a>
-      <a href="#contact" class="shop-tile reveal rd2">
-        <span class="shop-tile-icon">🌿</span>
-        <h3>Workshops</h3>
-        <p>Healing-centered creative experiences</p>
-      </a>
-      <a href="https://kasmiratheartist.substack.com" target="_blank" class="shop-tile reveal rd3">
-        <span class="shop-tile-icon">📖</span>
-        <h3>Poetry Vault</h3>
-        <p>Season Two — now streaming on Substack</p>
-      </a>
+  </div>
+
+  <!-- Eye Am Backpack -->
+  <div class="product-card reveal rd2">
+    <div class="product-img">
+      <img src="https://drive.google.com/thumbnail?id=1hV1eiqL2JZDH4gI98k7lIVMon4pv7xeq&sz=w600" alt="Eye Am Backpack"/>
     </div>
+    <div class="product-info">
+      <div>
+        <div class="product-name">Eye Am Backpack</div>
+        <div class="product-desc">Premium art backpack</div>
+        <div class="product-price">$60</div>
+      </div>
+      <a href="mailto:info@kasmiratheartist.com?subject=Inquire: Eye Am Backpack" class="product-btn">Inquire to Order</a>
+    </div>
+  </div>
+
+  <!-- Freedom Tote -->
+  <div class="product-card reveal rd3">
+    <div class="product-img">
+      <img src="https://drive.google.com/thumbnail?id=18pxUld-fF1ZD79_S_ICR-DRGXFzPzle8&sz=w600" alt="Freedom Tote"/>
+    </div>
+    <div class="product-info">
+      <div>
+        <div class="product-name">Freedom Tote</div>
+        <div class="product-desc">Premium canvas tote bag</div>
+        <div class="product-price">$60</div>
+      </div>
+      <a href="mailto:info@kasmiratheartist.com?subject=Inquire: Freedom Tote" class="product-btn">Inquire to Order</a>
+    </div>
+  </div>
+
+  <!-- Love is a Battlefield Tote -->
+  <div class="product-card reveal rd4">
+    <div class="product-img">
+      <img src="https://drive.google.com/thumbnail?id=1oRm4Qt7gb9POj5O3_v8zCcM-I1w4qO1b&sz=w600" alt="Love is a Battlefield Tote"/>
+    </div>
+    <div class="product-info">
+      <div>
+        <div class="product-name">Love is a Battlefield Tote</div>
+        <div class="product-desc">Premium canvas tote bag</div>
+        <div class="product-price">$60</div>
+      </div>
+      <a href="mailto:info@kasmiratheartist.com?subject=Inquire: Love is a Battlefield Tote" class="product-btn">Inquire to Order</a>
+    </div>
+  </div>
+
+  <!-- Community Tote -->
+  <div class="product-card reveal rd1">
+    <div class="product-img">
+      <img src="https://drive.google.com/thumbnail?id=1vjswMThuSmZpOpLMHEhx62_EJUBTgDRw&sz=w600" alt="Community Tote"/>
+    </div>
+    <div class="product-info">
+      <div>
+        <div class="product-name">Community Tote</div>
+        <div class="product-desc">Premium canvas tote bag</div>
+        <div class="product-price">$60</div>
+      </div>
+      <a href="mailto:info@kasmiratheartist.com?subject=Inquire: Community Tote" class="product-btn">Inquire to Order</a>
+    </div>
+  </div>
+
+  <!-- Exhale Journal -->
+  <div class="product-card reveal rd2">
+    <div class="product-img">
+      <img src="https://drive.google.com/thumbnail?id=1tMt65bMrsTIufQ1C6fDu66Og9JHOBvkp&sz=w600" alt="Exhale Journal"/>
+    </div>
+    <div class="product-info">
+      <div>
+        <div class="product-name">Exhale Journal</div>
+        <div class="product-desc">Premium art journal</div>
+        <div class="product-price">$15</div>
+      </div>
+      <a href="mailto:info@kasmiratheartist.com?subject=Inquire: Exhale Journal" class="product-btn">Inquire to Order</a>
+    </div>
+  </div>
+
+  <!-- Burning Rage Journal -->
+  <div class="product-card reveal rd3">
+    <div class="product-img">
+      <img src="https://drive.google.com/thumbnail?id=1II3lxgcfOpR6XrMZ0PHD_O1tejwxMERX&sz=w600" alt="Burning Rage Journal"/>
+    </div>
+    <div class="product-info">
+      <div>
+        <div class="product-name">Burning Rage Journal</div>
+        <div class="product-desc">Premium art journal</div>
+        <div class="product-price">$15</div>
+      </div>
+      <a href="mailto:info@kasmiratheartist.com?subject=Inquire: Burning Rage Journal" class="product-btn">Inquire to Order</a>
+    </div>
+  </div>
+</div>
+
+<!-- Originals upon request -->
+<div class="originals-note reveal">
+  <p>Original paintings are available upon request — each piece is a singular work, made to find its home.</p>
+  <a href="mailto:info@kasmiratheartist.com?subject=Inquire: Original Painting" class="btn-outline">Inquire About Originals</a>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter-section">
+  <div style="position:relative;z-index:1">
+    <span class="eyebrow reveal">Studio Letters</span>
+    <h2 class="section-title reveal rd1" style="color:white">From the Studio<br/>to You</h2>
+    <p class="newsletter-body reveal rd2">Every other month — new work, new poetry, new unfoldings. Not a marketing email. A letter from the practice.</p>
+    <div class="newsletter-form reveal rd3">
+      <input type="email" class="newsletter-input" placeholder="Your email address"/>
+      <button class="newsletter-btn" onclick="window.open('https://kasmiratheartist.substack.com','_blank')">Subscribe</button>
+    </div>
+    <p class="newsletter-note reveal">Every other month · No spam · Unsubscribe anytime</p>
   </div>
 </section>
 
@@ -480,8 +634,9 @@ footer{padding:44px 28px 28px}
         <div class="c-links">
           <a href="mailto:info@kasmiratheartist.com" class="c-link"><em class="c-icon">✉</em> info@kasmiratheartist.com</a>
           <a href="https://instagram.com/kasmiraartist" target="_blank" class="c-link"><em class="c-icon">◈</em> @kasmiraartist</a>
-          <a href="https://kasmiratheartist.substack.com" target="_blank" class="c-link"><em class="c-icon">◈</em> Substack — Poetry Vault</a>
+          <a href="https://kasmiratheartist.substack.com" target="_blank" class="c-link"><em class="c-icon">◈</em> Substack</a>
           <a href="https://shop.kasmiratheartist.com" target="_blank" class="c-link"><em class="c-icon">🛍</em> shop.kasmiratheartist.com</a>
+          <a href="https://delawarescene.com/artist/kasmira-mind-of-kasmira" target="_blank" class="c-link"><em class="c-icon">✦</em> Delaware Arts Roster</a>
         </div>
       </div>
       <div class="reveal rd2">
@@ -497,6 +652,8 @@ footer{padding:44px 28px 28px}
             <option>Workshop / Facilitation</option>
             <option>Speaking Engagement</option>
             <option>Brand Partnership</option>
+            <option>Wearables & Goods</option>
+            <option>Original Painting</option>
             <option>Other</option>
           </select>
         </div>
@@ -512,8 +669,9 @@ footer{padding:44px 28px 28px}
 <footer>
   <div class="footer-inner">
     <div>
-      <span class="footer-script">Mind of</span>
-      <span class="footer-name">KASMIRA</span>
+      <div class="footer-logo">
+        <img src="https://drive.google.com/thumbnail?id=168l3grl3BeIeipbgAAEpTXbxKdYBQoSL&sz=w200" alt="Mind of Kasmira"/>
+      </div>
       <span class="footer-tagline">Where Art Meets Soul</span>
     </div>
     <div class="footer-col">
@@ -522,7 +680,7 @@ footer{padding:44px 28px 28px}
         <li><a href="#home">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#poetry">Poetry Vault</a></li>
-        <li><a href="#shop">Shop</a></li>
+        <li><a href="#goods">Goods</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -532,11 +690,12 @@ footer{padding:44px 28px 28px}
         <li><a href="https://instagram.com/kasmiraartist" target="_blank">Instagram</a></li>
         <li><a href="https://kasmiratheartist.substack.com" target="_blank">Substack</a></li>
         <li><a href="https://shop.kasmiratheartist.com" target="_blank">Shop</a></li>
+        <li><a href="https://delawarescene.com/artist/kasmira-mind-of-kasmira" target="_blank">Delaware Arts Roster</a></li>
         <li><a href="mailto:info@kasmiratheartist.com">Email</a></li>
       </ul>
     </div>
   </div>
-  <p class="footer-bottom">© 2025 Kasmira Seymour · Mind of Kasmira · All creative IP protected · Wilmington, Delaware</p>
+  <p class="footer-bottom">© 2025 Kasmira Seymour · Mind of Kasmira · Where Art Meets Soul · All creative IP protected · Wilmington, Delaware</p>
 </footer>
 
 <script>
