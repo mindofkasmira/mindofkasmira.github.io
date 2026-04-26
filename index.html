@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mind of Kasmira | Where Art Meets Soul</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --ivory:#F9F6F0;
+  --ivory-mid:#F0EBE1;
+  --gold:#D4AF37;
+  --gold-deep:#B8941A;
+  --emerald:#017F75;
+  --emerald-deep:#015F5E;
+  --violet:#9C6ACF;
+  --ink:#1A1208;
+  --text:#2C1E08;
+  --text-soft:#5A4A2A;
+  --text-muted:#8A7A5A;
+}
+body{background:var(--ivory);color:var(--text);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--ivory-mid)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;padding:22px 56px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s ease}
+nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);padding:14px 56px;box-shadow:0 2px 40px rgba(44,30,8,0.06);border-bottom:1px solid rgba(212,175,55,0.2)}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+.nav-logo-script{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1rem;color:var(–gold);letter-spacing:0.06em}
+.nav-logo-name{font-family:‘Cinzel’,serif;font-size:1.1rem;font-weight:700;color:var(–emerald);letter-spacing:0.2em}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{font-family:‘Cinzel’,serif;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(–text-soft);text-decoration:none;transition:color 0.3s;position:relative}
+.nav-links a::after{content:’’;position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(–gold);transition:width 0.3s}
+.nav-links a:hover{color:var(–gold-deep)}
+.nav-links a:hover::after{width:100%}
+.nav-shop{padding:9px 24px;background:var(–emerald);color:white !important;font-family:‘Cinzel’,serif !important;font-size:0.6rem !important;font-weight:700;letter-spacing:0.2em !important;text-decoration:none;transition:background 0.3s !important}
+.nav-shop::after{display:none !important}
+.nav-shop:hover{background:var(–emerald-deep) !important}
+
+/* HERO */
+.hero-painting{position:relative;height:100vh;overflow:hidden}
+.hero-painting img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-painting::after{content:’’;position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,246,240,0.1) 0%,transparent 30%,transparent 55%,rgba(249,246,240,0.6) 80%,rgba(249,246,240,1) 100%)}
+.hero-text{position:absolute;bottom:60px;left:56px;right:56px;z-index:2}
+.hero-painting-title{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1rem;color:var(–text-muted);letter-spacing:0.22em;margin-bottom:8px;opacity:0;animation:rise 1s ease 1.5s forwards}
+.hero-name{font-family:‘Cinzel’,serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:700;letter-spacing:0.1em;line-height:1;background:linear-gradient(135deg,var(–gold) 0%,var(–gold-deep) 50%,var(–gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:rise 1.2s ease 0.6s forwards}
+.hero-tagline{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:clamp(1rem,2vw,1.3rem);color:var(–text-soft);letter-spacing:0.12em;margin-top:10px;opacity:0;animation:rise 1s ease 1s forwards}
+.scroll-cue{position:absolute;bottom:28px;right:56px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s ease 2s forwards}
+.scroll-cue span{font-size:0.52rem;letter-spacing:0.45em;color:var(–text-muted);text-transform:uppercase}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(–gold),transparent);animation:pulse 2.5s ease-in-out infinite}
+
+/* PAINTING LAYOUTS */
+.paint-full{position:relative;height:90vh;overflow:hidden}
+.paint-full img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 10s ease}
+.paint-full:hover img{transform:scale(1.03)}
+.paint-label{position:absolute;bottom:0;left:0;right:0;padding:40px 56px;background:linear-gradient(to top,rgba(249,246,240,1) 0%,rgba(249,246,240,0.7) 40%,transparent 100%)}
+.p-title{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:clamp(1.6rem,3.5vw,2.8rem);color:var(–text);letter-spacing:0.04em}
+.p-meta{font-size:0.6rem;letter-spacing:0.35em;color:var(–gold);text-transform:uppercase;margin-top:4px}
+
+.paint-duo{display:grid;grid-template-columns:1fr 1fr}
+.duo-cell{position:relative;height:75vh;overflow:hidden}
+.duo-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 8s ease}
+.duo-cell:hover img{transform:scale(1.04)}
+.duo-cell .paint-label{padding:32px 40px}
+
+.paint-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.grid-cell{position:relative;aspect-ratio:3/4;overflow:hidden}
+.grid-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
+.grid-cell:hover img{transform:scale(1.06)}
+.grid-cell .paint-label{padding:24px 28px}
+
+.gold-divider{height:1px;background:linear-gradient(90deg,transparent,var(–gold),transparent);opacity:0.4}
+
+/* SHOP CTA */
+.shop-cta{background:var(–ivory);padding:60px 56px;text-align:center}
+
+/* SECTIONS */
+.section{padding:100px 56px}
+.section-wrap{max-width:1100px;margin:0 auto}
+.eyebrow{display:block;font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.78rem;letter-spacing:0.5em;color:var(–gold);margin-bottom:14px;text-transform:lowercase}
+.section-title{font-family:‘Cinzel’,serif;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:600;color:var(–emerald);line-height:1.2;margin-bottom:20px}
+.gold-rule{width:44px;height:1.5px;background:var(–gold);margin:20px 0;opacity:0.7}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+.about-portrait{aspect-ratio:3/4;background:linear-gradient(160deg,var(–ivory-mid),#E8DFC8);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(212,175,55,0.2)}
+.portrait-note{font-family:‘Cormorant Garamond’,serif;font-style:italic;color:var(–text-muted);font-size:0.85rem;letter-spacing:0.1em;text-align:center;line-height:1.8;padding:20px}
+.frame-tl,.frame-br{position:absolute;width:44px;height:44px;pointer-events:none}
+.frame-tl{top:-10px;left:-10px;border-top:1.5px solid var(–gold);border-left:1.5px solid var(–gold);opacity:0.6}
+.frame-br{bottom:-10px;right:-10px;border-bottom:1.5px solid var(–emerald);border-right:1.5px solid var(–emerald);opacity:0.5}
+.about-lead{font-family:‘Cormorant Garamond’,serif;font-size:clamp(1.05rem,1.8vw,1.25rem);line-height:1.9;color:var(–text-soft);margin-bottom:32px}
+.about-lead em{color:var(–emerald);font-style:italic}
+.pillar{border-top:1px solid rgba(44,30,8,0.08);padding:16px 0;cursor:pointer}
+.pillar:last-of-type{border-bottom:1px solid rgba(44,30,8,0.08)}
+.pillar-head{display:flex;justify-content:space-between;align-items:center}
+.pillar-name{font-family:‘Cinzel’,serif;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;color:var(–text-muted);text-transform:uppercase;transition:color 0.3s}
+.pillar.open .pillar-name{color:var(–emerald)}
+.pillar-icon{color:var(–gold);font-size:1rem;transition:transform 0.3s}
+.pillar.open .pillar-icon{transform:rotate(45deg)}
+.pillar-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.pillar.open .pillar-body{max-height:140px;padding-top:10px}
+.pillar-body p{font-family:‘Cormorant Garamond’,serif;font-size:1rem;line-height:1.75;color:var(–text-muted)}
+.about-btns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+
+/* POETRY */
+.poetry-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.poetry-body{font-family:‘Cormorant Garamond’,serif;font-size:1.1rem;line-height:1.85;color:var(–text-soft);margin-bottom:32px}
+.platform-row{display:flex;gap:10px;flex-wrap:wrap}
+.pill{padding:9px 22px;border:1px solid rgba(212,175,55,0.5);font-size:0.65rem;letter-spacing:0.2em;color:var(–gold-deep);text-decoration:none;font-family:‘Lato’,sans-serif;text-transform:uppercase;transition:all 0.3s}
+.pill:hover{background:var(–gold);border-color:var(–gold);color:white}
+.cover-wrap{position:relative;display:flex;flex-direction:column;align-items:center}
+.cover-img{max-width:320px;width:100%;box-shadow:0 20px 60px rgba(44,30,8,0.15),0 0 0 1px rgba(212,175,55,0.2)}
+.credit-line{text-align:center;margin-top:14px;font-size:0.58rem;letter-spacing:0.25em;color:var(–text-muted);text-transform:uppercase}
+.turtle-section{margin-top:80px}
+.turtle-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:32px}
+.t-card{padding:24px 10px 20px;background:white;border-top:2px solid transparent;text-align:center;transition:all 0.3s}
+.t-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(44,30,8,0.1)}
+.t-glyph{font-size:1.6rem;display:block;margin-bottom:10px}
+.t-name{font-family:‘Cinzel’,serif;font-size:0.55rem;letter-spacing:0.12em;color:var(–emerald);display:block;margin-bottom:3px}
+.t-species{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.68rem;color:var(–text-muted);display:block;margin-bottom:6px}
+.t-chakra{font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;font-family:‘Lato’,sans-serif;font-weight:700;padding:3px 8px;display:inline-block}
+.t-card.morris{border-top-color:#E53935}.t-card.morris .t-chakra{color:#E53935;background:rgba(229,57,53,0.08)}
+.t-card.bach{border-top-color:#FF8F00}.t-card.bach .t-chakra{color:#FF8F00;background:rgba(255,143,0,0.08)}
+.t-card.absurdle{border-top-color:#D4AF37}.t-card.absurdle .t-chakra{color:#B8941A;background:rgba(212,175,55,0.1)}
+.t-card.purdle{border-top-color:#43A047}.t-card.purdle .t-chakra{color:#43A047;background:rgba(67,160,71,0.08)}
+.t-card.wurdle{border-top-color:#1E88E5}.t-card.wurdle .t-chakra{color:#1E88E5;background:rgba(30,136,229,0.08)}
+.t-card.fertile{border-top-color:#3949AB}.t-card.fertile .t-chakra{color:#3949AB;background:rgba(57,73,171,0.08)}
+.t-card.yadira{border-top-color:#8E24AA}.t-card.yadira .t-chakra{color:#8E24AA;background:rgba(142,36,170,0.08)}
+
+/* SHOP */
+.shop-feature{background:linear-gradient(135deg,var(–emerald) 0%,var(–emerald-deep) 100%);padding:52px 60px;display:flex;align-items:center;gap:40px;margin-bottom:3px;position:relative;overflow:hidden}
+.shop-feature::before{content:’’;position:absolute;top:-40%;right:-5%;width:300px;height:300px;background:radial-gradient(ellipse,rgba(212,175,55,0.12),transparent 70%);border-radius:50%}
+.shop-badge{width:72px;height:72px;border-radius:50%;background:var(–gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;position:relative;z-index:1}
+.shop-text{position:relative;z-index:1;flex:1}
+.shop-text h3{font-family:‘Cinzel’,serif;font-size:0.68rem;letter-spacing:0.24em;color:var(–gold);text-transform:uppercase;margin-bottom:8px}
+.shop-text p{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1.1rem;line-height:1.7;color:rgba(249,246,240,0.8);margin-bottom:18px}
+.shop-url{font-family:‘Cinzel’,serif;font-size:0.7rem;letter-spacing:0.14em;color:var(–gold);background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.35);padding:8px 18px;display:inline-block}
+.shop-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.shop-tile{padding:44px 28px 36px;background:var(–ivory-mid);text-align:center;text-decoration:none;color:inherit;border-bottom:2px solid transparent;transition:all 0.35s;display:block}
+.shop-tile:hover{background:white;border-bottom-color:var(–gold);transform:translateY(-4px);box-shadow:0 16px 40px rgba(44,30,8,0.07)}
+.shop-tile-icon{font-size:1.8rem;display:block;margin-bottom:16px}
+.shop-tile h3{font-family:‘Cinzel’,serif;font-size:0.65rem;letter-spacing:0.18em;color:var(–emerald);margin-bottom:10px;text-transform:uppercase}
+.shop-tile p{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.92rem;color:var(–text-muted);line-height:1.7}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
+.contact-whisper{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1.1rem;color:var(–text-muted);line-height:1.85;max-width:360px;margin-bottom:40px}
+.c-links{display:flex;flex-direction:column}
+.c-link{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid rgba(44,30,8,0.07);text-decoration:none;font-family:‘Cormorant Garamond’,serif;font-size:1rem;color:var(–text-soft);transition:all 0.3s}
+.c-link:hover{color:var(–emerald);padding-left:8px;border-bottom-color:rgba(1,127,117,0.2)}
+.c-icon{color:var(–gold);font-style:normal;min-width:18px;text-align:center}
+.f-group{padding-bottom:22px;margin-bottom:6px;border-bottom:1px solid rgba(44,30,8,0.1);transition:border-color 0.3s}
+.f-group:focus-within{border-bottom-color:var(–emerald)}
+.f-group label{display:block;font-size:0.58rem;letter-spacing:0.35em;color:var(–gold-deep);text-transform:uppercase;font-family:‘Lato’,sans-serif;margin-bottom:10px}
+.f-group input,.f-group textarea,.f-group select{width:100%;background:transparent;border:none;outline:none;font-family:‘Cormorant Garamond’,serif;font-size:1rem;color:var(–text);resize:none}
+.f-group select option{background:var(–ivory)}
+.f-group textarea{min-height:80px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.btn-send{margin-top:24px;width:100%;padding:17px;background:var(–emerald);color:white;border:none;cursor:pointer;font-family:‘Cinzel’,serif;font-size:0.65rem;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;transition:all 0.3s}
+.btn-send:hover{background:var(–emerald-deep)}
+
+/* BUTTONS */
+.btn-primary{display:inline-block;padding:15px 40px;background:var(–emerald);color:white;font-family:‘Cinzel’,serif;font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all 0.3s}
+.btn-primary:hover{background:var(–emerald-deep);transform:translateY(-2px)}
+.btn-gold{display:inline-block;padding:15px 40px;background:var(–gold);color:var(–ink);font-family:‘Cinzel’,serif;font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
+.btn-gold:hover{background:var(–gold-deep);transform:translateY(-2px)}
+.btn-outline{display:inline-block;padding:14px 40px;background:transparent;color:var(–emerald);font-family:‘Cinzel’,serif;font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(–emerald);cursor:pointer;transition:all 0.3s}
+.btn-outline:hover{background:rgba(1,127,117,0.06);transform:translateY(-2px)}
+.btn-ghost{display:inline-block;padding:14px 40px;background:transparent;color:var(–text-soft);font-family:‘Cinzel’,serif;font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(44,30,8,0.2);cursor:pointer;transition:all 0.3s}
+.btn-ghost:hover{border-color:var(–gold);color:var(–gold-deep)}
+
+/* FOOTER */
+footer{background:var(–ink);padding:56px 56px 36px}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(249,246,240,0.06)}
+.footer-script{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1rem;color:var(–gold);display:block}
+.footer-name{font-family:‘Cinzel’,serif;font-size:1.1rem;font-weight:700;letter-spacing:0.18em;color:white;display:block;margin-bottom:8px}
+.footer-tagline{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.82rem;letter-spacing:0.18em;color:rgba(249,246,240,0.25)}
+.footer-col h4{font-family:‘Cinzel’,serif;font-size:0.58rem;letter-spacing:0.24em;color:var(–gold);text-transform:uppercase;margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-family:‘Cormorant Garamond’,serif;font-size:0.92rem;color:rgba(249,246,240,0.35);text-decoration:none;letter-spacing:0.06em;transition:color 0.3s}
+.footer-col a:hover{color:var(–gold)}
+.footer-bottom{max-width:1100px;margin:24px auto 0;text-align:center;font-size:0.65rem;letter-spacing:0.12em;color:rgba(249,246,240,0.15);font-family:‘Cormorant Garamond’,serif}
+
+/* ANIMATIONS */
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible{opacity:1;transform:none}
+.rd1{transition-delay:0.08s}.rd2{transition-delay:0.18s}.rd3{transition-delay:0.3s}
+.rd4{transition-delay:0.42s}.rd5{transition-delay:0.54s}.rd6{transition-delay:0.66s}.rd7{transition-delay:0.78s}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+nav{padding:18px 28px}
+nav.scrolled{padding:12px 28px}
+.nav-links{display:none}
+.section{padding:80px 28px}
+.hero-text{left:28px;right:28px}
+.scroll-cue{right:28px}
+.about-grid,.poetry-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+.turtle-grid{grid-template-columns:repeat(4,1fr)}
+.paint-duo{grid-template-columns:1fr}
+.duo-cell{height:60vh}
+.paint-grid{grid-template-columns:1fr 1fr}
+.shop-tiles{grid-template-columns:1fr 1fr}
+.footer-inner{grid-template-columns:1fr}
+.shop-feature{flex-direction:column;text-align:center;padding:40px 28px}
+.f-row{grid-template-columns:1fr}
+.paint-label{padding:28px}
+.shop-cta{padding:48px 28px}
+}
+@media(max-width:600px){
+.paint-grid{grid-template-columns:1fr}
+.turtle-grid{grid-template-columns:repeat(2,1fr)}
+.shop-tiles{grid-template-columns:1fr}
+.hero-name{font-size:2.2rem}
+footer{padding:44px 28px 28px}
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav id="nav">
+  <a class="nav-logo" href="#home">
+    <span class="nav-logo-script">Mind of</span>
+    <span class="nav-logo-name">KASMIRA</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#poetry">Poetry Vault</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://shop.kasmiratheartist.com" target="_blank" class="nav-shop">Shop</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+
+<section id="home">
+
+  <!-- HERO: Pinked -->
+
+  <div class="hero-painting">
+    <img src="https://drive.google.com/thumbnail?id=1eF3FnR0hlZ5f3qyO84AmZYgUbcCUIuQh&sz=w1600" alt="Pinked — Kasmira Seymour"/>
+    <div class="hero-text">
+      <p class="hero-painting-title">Pinked · Original Painting</p>
+      <h1 class="hero-name">KASMIRA</h1>
+      <p class="hero-tagline">Where Art Meets Soul</p>
+    </div>
+    <div class="scroll-cue">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </div>
+
+  <!-- Full: Intuition -->
+
+  <div class="paint-full reveal">
+    <img src="https://drive.google.com/thumbnail?id=1scQv4EPjTp28KUvg9a3fEM4G5HgcWMKT&sz=w1600" alt="Intuition"/>
+    <div class="paint-label">
+      <div class="p-title">Intuition</div>
+      <div class="p-meta">Original Painting · Available as Print</div>
+    </div>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- Duo: Eye Am + Burning Rage -->
+
+  <div class="paint-duo">
+    <div class="duo-cell reveal rd1">
+      <img src="https://drive.google.com/thumbnail?id=1ZAC_buXd2xc1XoBs6KDYLJrUf6PQQsTS&sz=w1200" alt="Eye Am"/>
+      <div class="paint-label">
+        <div class="p-title">Eye Am</div>
+        <div class="p-meta">Original Painting</div>
+      </div>
+    </div>
+    <div class="duo-cell reveal rd2">
+      <img src="https://drive.google.com/thumbnail?id=1GewKz-7aEtH63w3oWUu0oxL6OocwA3zq&sz=w1200" alt="Burning Rage"/>
+      <div class="paint-label">
+        <div class="p-title">Burning Rage</div>
+        <div class="p-meta">Original Painting</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- Full: Love Makes the World Go Round -->
+
+  <div class="paint-full reveal">
+    <img src="https://drive.google.com/thumbnail?id=1rYRbONOVEGUL0etI43tMX6Va6iT9y-NK&sz=w1600" alt="Love Makes the World Go Round"/>
+    <div class="paint-label">
+      <div class="p-title">Love Makes the World Go Round</div>
+      <div class="p-meta">Original Painting · Available as Print</div>
+    </div>
+  </div>
+
+  <div class="gold-divider"></div>
+
+  <!-- Grid: 6 paintings -->
+
+  <div class="paint-grid">
+    <div class="grid-cell reveal rd1">
+      <img src="https://drive.google.com/thumbnail?id=1woL1VNyiZ0ItIkLgJNXPtCXqxrnl84WY&sz=w800" alt="Community"/>
+      <div class="paint-label"><div class="p-title">Community</div><div class="p-meta">Original Painting</div></div>
+    </div>
+    <div class="grid-cell reveal rd2">
+      <img src="https://drive.google.com/thumbnail?id=1h1AIYyuvfHNl-OctRl-3fm-wXGZ_Um28&sz=w800" alt="Breathe"/>
+      <div class="paint-label"><div class="p-title">Breathe</div><div class="p-meta">Original Painting</div></div>
+    </div>
+    <div class="grid-cell reveal rd3">
+      <img src="https://drive.google.com/thumbnail?id=1p-fpzVndOyD46Z3pvE-6W6LsHZ_7YQeX&sz=w800" alt="Bloom"/>
+      <div class="paint-label"><div class="p-title">Bloom</div><div class="p-meta">Original Painting · Available as Print</div></div>
+    </div>
+    <div class="grid-cell reveal rd4">
+      <img src="https://drive.google.com/thumbnail?id=1uYE3sGYP9IjSkJtPKVcSTWVs4kuLp3cZ&sz=w800" alt="Grounded"/>
+      <div class="paint-label"><div class="p-title">Grounded</div><div class="p-meta">Original Painting</div></div>
+    </div>
+    <div class="grid-cell reveal rd5">
+      <img src="https://drive.google.com/thumbnail?id=1O458Joxo0DWwUCCq1wy41P37pcRmjzbO&sz=w800" alt="Evergreen"/>
+      <div class="paint-label"><div class="p-title">Evergreen</div><div class="p-meta">Original Painting · Available as Print</div></div>
+    </div>
+    <div class="grid-cell reveal rd6">
+      <img src="https://drive.google.com/thumbnail?id=1ogpaewP88VwCPustnXOL6UyPoXlWijjQ&sz=w800" alt="Humpty Dumpty"/>
+      <div class="paint-label"><div class="p-title">Humpty Dumpty</div><div class="p-meta">Original Painting</div></div>
+    </div>
+  </div>
+
+  <!-- Shop CTA -->
+
+  <div class="shop-cta reveal">
+    <span class="eyebrow">Available Now</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--text-soft);margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7">Digital art prints — instant download, museum-quality files</p>
+    <a href="https://shop.kasmiratheartist.com" target="_blank" class="btn-gold">Shop Now — shop.kasmiratheartist.com</a>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="section" style="background:var(--ivory-mid)">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div style="position:relative" class="reveal">
+        <div class="about-portrait">
+          <div class="portrait-note">[ Your photo here ]</div>
+        </div>
+        <div class="frame-tl"></div>
+        <div class="frame-br"></div>
+      </div>
+      <div class="reveal rd2">
+        <span class="eyebrow">The Artist</span>
+        <h2 class="section-title">Kasmira Seymour</h2>
+        <div class="gold-rule"></div>
+        <p class="about-lead">An East Coast visual artist, poet, and creative strategist. My work lives where <em>flesh meets root</em> — where healing is wild, and the spirit insists on being seen.</p>
+        <div class="pillar open" onclick="togglePillar(this)">
+          <div class="pillar-head"><span class="pillar-name">Creativity as Healing</span><span class="pillar-icon">+</span></div>
+          <div class="pillar-body"><p>Watercolor, acrylic, oil painting. Poetry. Expressive arts. The belief that making art is an act of self-reclamation.</p></div>
+        </div>
+        <div class="pillar" onclick="togglePillar(this)">
+          <div class="pillar-head"><span class="pillar-name">Education as Empowerment</span><span class="pillar-icon">+</span></div>
+          <div class="pillar-body"><p>15+ years as a teaching artist. Workshops for schools, institutions, and communities. Everyone deserves access to creative tools.</p></div>
+        </div>
+        <div class="pillar" onclick="togglePillar(this)">
+          <div class="pillar-head"><span class="pillar-name">Storytelling as Strategy</span><span class="pillar-icon">+</span></div>
+          <div class="pillar-body"><p>Brand consulting. Creative IP. Residencies. Exhibitions. Artists are strategic thinkers — not just makers.</p></div>
+        </div>
+        <div class="about-btns">
+          <a href="#contact" class="btn-primary">Work With Me</a>
+          <a href="https://shop.kasmiratheartist.com" target="_blank" class="btn-ghost">Shop the Art</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POETRY VAULT -->
+
+<section id="poetry" class="section" style="background:var(--ivory)">
+  <div class="section-wrap">
+    <div class="poetry-grid">
+      <div class="reveal">
+        <span class="eyebrow">The Voice</span>
+        <h2 class="section-title">A Letter to<br/>the Universe</h2>
+        <div class="gold-rule"></div>
+        <p class="poetry-body"><em>Poetry Vault — Season Two</em> is live. Seven turtle archetypes, seven chakras, one invitation to come home to yourself.</p>
+        <div class="platform-row">
+          <a href="https://kasmiratheartist.substack.com" target="_blank" class="pill">Substack</a>
+          <a href="#" class="pill">Spotify</a>
+          <a href="#" class="pill">Apple Podcasts</a>
+        </div>
+      </div>
+      <div class="reveal rd2">
+        <div class="cover-wrap">
+          <img class="cover-img" src="https://drive.google.com/thumbnail?id=1GVxPY-otPKC5jl0rdyASUO5YimlH-Cxv&sz=w600" alt="A Letter To The Universe: Poetry Vault Season Two"/>
+          <p class="credit-line">Cover art — Nicolás Cala & Jisu Ryu</p>
+        </div>
+      </div>
+    </div>
+
+```
+<div class="turtle-section reveal">
+  <span class="eyebrow" style="text-align:center;display:block">Turtle Reflections</span>
+  <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;color:var(--emerald);text-align:center;letter-spacing:0.1em">Seven Chakras · Seven Turtles · Seven Letters</h3>
+  <div class="turtle-grid">
+    <div class="t-card morris"><span class="t-glyph">🐢</span><span class="t-name">Morris</span><span class="t-species">The Tortoise</span><span class="t-chakra">Root · Red</span></div>
+    <div class="t-card bach"><span class="t-glyph">🐢</span><span class="t-name">Bach</span><span class="t-species">The Box Turtle</span><span class="t-chakra">Sacral · Orange</span></div>
+    <div class="t-card absurdle"><span class="t-glyph">🐢</span><span class="t-name">Absurdle</span><span class="t-species">The Nonsensical Turtle</span><span class="t-chakra">Solar Plexus · Yellow</span></div>
+    <div class="t-card purdle"><span class="t-glyph">🐢</span><span class="t-name">Purdle</span><span class="t-species">The Pretty Turtle</span><span class="t-chakra">Heart · Green</span></div>
+    <div class="t-card wurdle"><span class="t-glyph">🐢</span><span class="t-name">Wurdle</span><span class="t-species">The Hurdle-Jumping Turtle</span><span class="t-chakra">Throat · Blue</span></div>
+    <div class="t-card fertile"><span class="t-glyph">🐢</span><span class="t-name">Fertile</span><span class="t-species">The Abundant Turtle</span><span class="t-chakra">Third Eye · Indigo</span></div>
+    <div class="t-card yadira"><span class="t-glyph">🐢</span><span class="t-name">Yadira</span><span class="t-species">The Red Ear Turtle</span><span class="t-chakra">Crown · Violet</span></div>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:52px" class="reveal">
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--text-muted);margin-bottom:20px">Poetry as portal. Come home to yourself.</p>
+  <a href="https://kasmiratheartist.substack.com" target="_blank" class="btn-outline">Read the Poetry Vault</a>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- SHOP -->
+
+<section id="shop" class="section" style="background:var(--ivory-mid)">
+  <div class="section-wrap">
+    <span class="eyebrow reveal">The Shop</span>
+    <h2 class="section-title reveal rd1">Own a Piece<br/>of the Work</h2>
+    <div class="shop-feature reveal rd2">
+      <div class="shop-badge">🛍</div>
+      <div class="shop-text">
+        <h3>Digital Art Prints — Available Now</h3>
+        <p>Museum-quality digital downloads of original paintings. Instant access. Every purchase supports a living artist with a mission.</p>
+        <span class="shop-url">shop.kasmiratheartist.com</span>
+      </div>
+      <a href="https://shop.kasmiratheartist.com" target="_blank" class="btn-gold" style="flex-shrink:0;white-space:nowrap">Visit the Shop</a>
+    </div>
+    <div class="shop-tiles">
+      <a href="mailto:info@kasmiratheartist.com" class="shop-tile reveal rd1">
+        <span class="shop-tile-icon">✦</span>
+        <h3>Commission</h3>
+        <p>Custom paintings & creative partnerships</p>
+      </a>
+      <a href="#contact" class="shop-tile reveal rd2">
+        <span class="shop-tile-icon">🌿</span>
+        <h3>Workshops</h3>
+        <p>Healing-centered creative experiences</p>
+      </a>
+      <a href="https://kasmiratheartist.substack.com" target="_blank" class="shop-tile reveal rd3">
+        <span class="shop-tile-icon">📖</span>
+        <h3>Poetry Vault</h3>
+        <p>Season Two — now streaming on Substack</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="section" style="background:var(--ivory)">
+  <div class="section-wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Let's Create Together</span>
+        <h2 class="section-title">Start a<br/>Conversation</h2>
+        <div class="gold-rule"></div>
+        <p class="contact-whisper">Available for commissions, art licensing, workshops, speaking engagements, and brand partnerships.</p>
+        <div class="c-links">
+          <a href="mailto:info@kasmiratheartist.com" class="c-link"><em class="c-icon">✉</em> info@kasmiratheartist.com</a>
+          <a href="https://instagram.com/kasmiraartist" target="_blank" class="c-link"><em class="c-icon">◈</em> @kasmiraartist</a>
+          <a href="https://kasmiratheartist.substack.com" target="_blank" class="c-link"><em class="c-icon">◈</em> Substack — Poetry Vault</a>
+          <a href="https://shop.kasmiratheartist.com" target="_blank" class="c-link"><em class="c-icon">🛍</em> shop.kasmiratheartist.com</a>
+        </div>
+      </div>
+      <div class="reveal rd2">
+        <div class="f-row">
+          <div class="f-group"><label>Name</label><input type="text" placeholder="Your name"/></div>
+          <div class="f-group"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
+        </div>
+        <div class="f-group"><label>Inquiry</label>
+          <select>
+            <option value="">Select one</option>
+            <option>Commission a Painting</option>
+            <option>Art Licensing</option>
+            <option>Workshop / Facilitation</option>
+            <option>Speaking Engagement</option>
+            <option>Brand Partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="f-group"><label>Message</label><textarea placeholder="Tell me about your vision..."></textarea></div>
+        <button class="btn-send" onclick="alert('To activate: connect to Formspree.io — free, 2 minutes.')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-script">Mind of</span>
+      <span class="footer-name">KASMIRA</span>
+      <span class="footer-tagline">Where Art Meets Soul</span>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#home">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#poetry">Poetry Vault</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://instagram.com/kasmiraartist" target="_blank">Instagram</a></li>
+        <li><a href="https://kasmiratheartist.substack.com" target="_blank">Substack</a></li>
+        <li><a href="https://shop.kasmiratheartist.com" target="_blank">Shop</a></li>
+        <li><a href="mailto:info@kasmiratheartist.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-bottom">© 2025 Kasmira Seymour · Mind of Kasmira · All creative IP protected · Wilmington, Delaware</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, {threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+function togglePillar(el){
+  document.querySelectorAll('.pillar').forEach(p => { if(p!==el) p.classList.remove('open'); });
+  el.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
