@@ -7,73 +7,215 @@
 <title>Mind of Kasmira | Links</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --ivory:#F9F6F0;
-  --gold:#D4AF37;
-  --gold-deep:#B8941A;
-  --emerald:#017F75;
-  --emerald-deep:#015F5E;
-  --ink:#1A1208;
-  --text-muted:#8A7A5A;
-}
-body{min-height:100vh;background:var(--ivory);display:flex;align-items:center;justify-content:center;font-family:'Lato',sans-serif;overflow:hidden}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Orbs */
-.orb{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;animation:drift ease-in-out infinite alternate}
-.o1{width:500px;height:500px;background:radial-gradient(ellipse,rgba(1,119,117,0.2),transparent 70%);top:-150px;left:-100px;animation-duration:18s}
-.o2{width:400px;height:400px;background:radial-gradient(ellipse,rgba(218,161,55,0.15),transparent 70%);bottom:-100px;right:-80px;animation-duration:22s;animation-delay:4s}
-.o3{width:300px;height:300px;background:radial-gradient(ellipse,rgba(181,20,187,0.1),transparent 70%);bottom:20%;left:5%;animation-duration:16s;animation-delay:2s}
-.o4{width:250px;height:250px;background:radial-gradient(ellipse,rgba(150,138,207,0.12),transparent 70%);top:20%;right:5%;animation-duration:20s;animation-delay:6s}
-@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(15px,10px) scale(1.05)}}
+:root {
+–ivory: #F9F6F0;
+–gold: #D4AF37;
+–gold-light: #E8C84A;
+–gold-deep: #B8941A;
+–emerald: #017F75;
+–emerald-deep: #015F5E;
+–ink: #1A1208;
+–text-muted: #8A7A5A;
+}
+
+body {
+min-height: 100vh;
+background: var(–ivory);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: ‘Lato’, sans-serif;
+overflow-x: hidden;
+}
+
+/* Background orbs */
+.orb { position: fixed; border-radius: 50%; filter: blur(70px); pointer-events: none; animation: drift ease-in-out infinite alternate; }
+.o1 { width: 500px; height: 500px; background: radial-gradient(ellipse, rgba(1,127,117,0.18), transparent 70%); top: -150px; left: -100px; animation-duration: 18s; }
+.o2 { width: 400px; height: 400px; background: radial-gradient(ellipse, rgba(212,175,55,0.14), transparent 70%); bottom: -100px; right: -80px; animation-duration: 22s; animation-delay: 4s; }
+.o3 { width: 300px; height: 300px; background: radial-gradient(ellipse, rgba(181,20,187,0.08), transparent 70%); bottom: 20%; left: 5%; animation-duration: 16s; animation-delay: 2s; }
+.o4 { width: 250px; height: 250px; background: radial-gradient(ellipse, rgba(150,138,207,0.1), transparent 70%); top: 20%; right: 5%; animation-duration: 20s; animation-delay: 6s; }
+@keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(15px,10px) scale(1.05); } }
 
 /* Shimmer dots */
-.sdot{position:fixed;border-radius:50%;background:radial-gradient(circle,rgba(218,161,55,0.9),transparent 70%);animation:sfloat ease-in-out infinite alternate;pointer-events:none}
-@keyframes sfloat{0%{opacity:0.1;transform:translateY(0)}50%{opacity:0.8;transform:translateY(-8px)}100%{opacity:0.15;transform:translateY(-2px)}}
+.sdot { position: fixed; border-radius: 50%; background: radial-gradient(circle, rgba(212,175,55,0.9), transparent 70%); animation: sfloat ease-in-out infinite alternate; pointer-events: none; }
+@keyframes sfloat { 0% { opacity: 0.1; transform: translateY(0); } 50% { opacity: 0.7; transform: translateY(-8px); } 100% { opacity: 0.15; transform: translateY(-2px); } }
 
 /* Card */
-.card{position:relative;z-index:10;width:100%;max-width:420px;padding:48px 32px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.card {
+position: relative;
+z-index: 10;
+width: 100%;
+max-width: 420px;
+padding: 52px 32px 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
 
 /* Portrait */
-.portrait{width:90px;height:90px;border-radius:50%;overflow:hidden;border:2px solid rgba(212,175,55,0.4);margin-bottom:20px;box-shadow:0 8px 32px rgba(212,175,55,0.15)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.portrait {
+width: 90px;
+height: 90px;
+border-radius: 50%;
+overflow: hidden;
+border: 2px solid rgba(212,175,55,0.5);
+margin-bottom: 20px;
+box-shadow: 0 0 0 4px rgba(1,127,117,0.15), 0 8px 32px rgba(212,175,55,0.18);
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
 /* Name */
-.name-script{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1.1rem;color:var(–gold);letter-spacing:0.06em;display:block;line-height:1}
-.name-main{font-family:‘Cinzel’,serif;font-size:1.8rem;font-weight:700;letter-spacing:0.12em;background:linear-gradient(135deg,#E8C048 0%,#DAA137 35%,#F0D070 60%,#C08820 100%);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;line-height:1;margin-bottom:10px}
-.tagline{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.85rem;letter-spacing:0.3em;color:var(–text-muted);text-transform:uppercase;margin-bottom:36px}
+.name-script {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 1.1rem;
+color: var(–text-muted);
+letter-spacing: 0.06em;
+display: block;
+line-height: 1;
+}
+.name-main {
+font-family: ‘Cinzel’, serif;
+font-size: 1.9rem;
+font-weight: 700;
+letter-spacing: 0.14em;
+background: linear-gradient(135deg, #E8C048 0%, #DAA137 35%, #F0D070 60%, #C08820 100%);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+display: block;
+line-height: 1.1;
+margin-bottom: 10px;
+}
+.tagline {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 0.85rem;
+letter-spacing: 0.3em;
+color: var(–text-muted);
+text-transform: uppercase;
+margin-bottom: 32px;
+}
 
 /* Divider */
-.div{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(–gold),transparent);margin:0 auto 32px}
+.divider {
+width: 60px;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+margin: 0 auto 32px;
+}
 
 /* Links */
-.links{width:100%;display:flex;flex-direction:column;gap:12px}
-.link-item{display:flex;align-items:center;gap:16px;padding:16px 24px;text-decoration:none;border:1px solid rgba(212,175,55,0.25);background:rgba(249,246,240,0.6);backdrop-filter:blur(10px);transition:all 0.3s;position:relative;overflow:hidden}
-.link-item::before{content:’’;position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,175,55,0.08),transparent);opacity:0;transition:opacity 0.3s}
-.link-item:hover{border-color:rgba(212,175,55,0.6);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,0.12)}
-.link-item:hover::before{opacity:1}
-.link-icon{font-size:1.2rem;flex-shrink:0;width:28px;text-align:center}
-.link-text{flex:1;text-align:left}
-.link-label{font-family:‘Cinzel’,serif;font-size:0.62rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(–emerald);display:block}
-.link-sub{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.82rem;color:var(–text-muted);display:block;margin-top:2px}
-.link-arrow{color:rgba(212,175,55,0.5);font-size:0.8rem;transition:transform 0.3s}
-.link-item:hover .link-arrow{transform:translateX(4px);color:var(–gold)}
+.links {
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
 
-/* Featured link */
-.link-item.featured{background:var(–emerald);border-color:var(–emerald)}
-.link-item.featured .link-label{color:white}
-.link-item.featured .link-sub{color:rgba(249,246,240,0.6)}
-.link-item.featured .link-arrow{color:rgba(212,175,55,0.7)}
-.link-item.featured:hover{background:var(–emerald-deep);border-color:var(–emerald-deep)}
+.link-item {
+display: flex;
+align-items: center;
+gap: 16px;
+padding: 15px 22px;
+text-decoration: none;
+border: 1.5px solid var(–gold-deep);
+background: linear-gradient(135deg, var(–gold-light) 0%, var(–gold) 50%, var(–gold-deep) 100%);
+box-shadow: 4px 4px 0px var(–emerald), 0 4px 18px rgba(1,127,117,0.18);
+transition: all 0.25s ease;
+position: relative;
+overflow: hidden;
+}
 
-/* Footer note */
-.card-footer{margin-top:32px;font-size:0.58rem;letter-spacing:0.25em;color:rgba(138,122,90,0.5);text-transform:uppercase;font-family:‘Lato’,sans-serif}
+.link-item::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+pointer-events: none;
+}
+
+.link-item:hover {
+transform: translate(-2px, -2px);
+box-shadow: 6px 6px 0px var(–emerald), 0 6px 24px rgba(1,127,117,0.25);
+}
+
+.link-item:active {
+transform: translate(2px, 2px);
+box-shadow: 2px 2px 0px var(–emerald);
+}
+
+.link-icon {
+font-size: 1.1rem;
+flex-shrink: 0;
+width: 26px;
+text-align: center;
+filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+.link-text { flex: 1; text-align: left; }
+
+.link-label {
+font-family: ‘Cinzel’, serif;
+font-size: 0.64rem;
+font-weight: 600;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–ink);
+display: block;
+}
+
+.link-sub {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 0.82rem;
+color: rgba(26,18,8,0.65);
+display: block;
+margin-top: 2px;
+}
+
+.link-arrow {
+color: var(–ink);
+font-size: 0.85rem;
+opacity: 0.6;
+transition: transform 0.25s, opacity 0.25s;
+}
+
+.link-item:hover .link-arrow {
+transform: translateX(4px);
+opacity: 1;
+}
+
+/* Featured — slightly deeper gold */
+.link-item.featured {
+background: linear-gradient(135deg, #F0D060 0%, #D4AF37 45%, #A8780A 100%);
+border-color: var(–ink);
+box-shadow: 4px 4px 0px var(–emerald-deep), 0 4px 20px rgba(1,95,94,0.28);
+}
+
+.link-item.featured:hover {
+box-shadow: 6px 6px 0px var(–emerald-deep), 0 6px 28px rgba(1,95,94,0.35);
+}
+
+.link-item.featured .link-label { color: var(–ink); }
+.link-item.featured .link-sub { color: rgba(26,18,8,0.7); }
+
+/* Footer */
+.card-footer {
+margin-top: 36px;
+font-size: 0.58rem;
+letter-spacing: 0.25em;
+color: rgba(138,122,90,0.5);
+text-transform: uppercase;
+font-family: ‘Lato’, sans-serif;
+}
 </style>
 
 </head>
 <body>
-
-<!-- Orbs -->
 
 <div class="orb o1"></div>
 <div class="orb o2"></div>
@@ -87,6 +229,7 @@ body{min-height:100vh;background:var(--ivory);display:flex;align-items:center;ju
 <div class="sdot" style="width:3px;height:3px;top:60%;right:8%;animation-duration:4s;animation-delay:2.5s"></div>
 
 <div class="card">
+
   <div class="portrait">
     <img src="https://drive.google.com/thumbnail?id=1t6QXYlWzbC1_-hTYfZnJsxjhFAhFzY9Q&sz=w300" alt="Kasmira Seymour"/>
   </div>
@@ -96,7 +239,7 @@ body{min-height:100vh;background:var(--ivory);display:flex;align-items:center;ju
 
   <p class="tagline">Where Art Meets Soul</p>
 
-  <div class="div"></div>
+  <div class="divider"></div>
 
   <div class="links">
 
