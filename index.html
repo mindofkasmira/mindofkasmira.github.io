@@ -29,9 +29,9 @@ body{background:var(--ivory);color:var(--text);font-family:'Lato',sans-serif;fon
 /* NAV */
 nav{position:fixed;top:0;width:100%;z-index:999;padding:16px 56px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s ease}
 nav.scrolled{background:rgba(249,246,240,0.96);backdrop-filter:blur(20px);padding:12px 56px;box-shadow:0 2px 40px rgba(44,30,8,0.06);border-bottom:1px solid rgba(212,175,55,0.2)}
-.nav-logo{text-decoration:none;display:flex;align-items:center}
-.nav-logo img{height:56px;width:56px;object-fit:contain;transition:height 0.4s ease}
-nav.scrolled .nav-logo img{height:44px;width:44px}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+.nav-logo-script{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:0.95rem;color:var(–gold);letter-spacing:0.06em;line-height:1}
+.nav-logo-name{font-family:‘Cinzel’,serif;font-size:1.1rem;font-weight:700;color:var(–emerald);letter-spacing:0.2em;line-height:1}
 .nav-links{display:flex;gap:40px;list-style:none}
 .nav-links a{font-family:‘Cinzel’,serif;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(–text-soft);text-decoration:none;transition:color 0.3s;position:relative}
 .nav-links a::after{content:’’;position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(–gold);transition:width 0.3s}
@@ -293,6 +293,7 @@ footer{background:var(–ink);padding:56px 56px 36px}
 .footer-bottom{max-width:1100px;margin:24px auto 0;text-align:center;font-size:0.65rem;letter-spacing:0.12em;color:rgba(249,246,240,0.15);font-family:‘Cormorant Garamond’,serif}
 
 /* ANIMATIONS */
+@keyframes riseIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
@@ -339,7 +340,8 @@ footer{padding:44px 28px 28px}
 
 <nav id="nav">
   <a class="nav-logo" href="#home">
-    <img src="https://drive.google.com/thumbnail?id=168l3grl3BeIeipbgAAEpTXbxKdYBQoSL&sz=w200" alt="Mind of Kasmira"/>
+    <span class="nav-logo-script">Mind of</span>
+    <span class="nav-logo-name">KASMIRA</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -754,9 +756,8 @@ footer{padding:44px 28px 28px}
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">
-        <img src="https://drive.google.com/thumbnail?id=168l3grl3BeIeipbgAAEpTXbxKdYBQoSL&sz=w200" alt="Mind of Kasmira"/>
-      </div>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--gold);display:block;line-height:1">Mind of</span>
+      <span style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;letter-spacing:0.18em;color:white;display:block;margin-bottom:8px">KASMIRA</span>
       <span class="footer-tagline">Where Art Meets Soul</span>
     </div>
     <div class="footer-col">
