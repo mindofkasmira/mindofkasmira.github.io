@@ -41,15 +41,96 @@ nav.scrolled .nav-logo img{height:44px;width:44px}
 .nav-shop::after{display:none !important}
 .nav-shop:hover{background:var(–emerald-deep) !important}
 
-/* HERO */
-.hero-painting{position:relative;height:100vh;overflow:hidden}
-.hero-painting img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.hero-painting::after{content:’’;position:absolute;inset:0;background:linear-gradient(to bottom,rgba(249,246,240,0.05) 0%,transparent 20%,transparent 55%,rgba(249,246,240,0.6) 80%,rgba(249,246,240,1) 100%)}
-.hero-text{position:absolute;bottom:60px;left:56px;right:56px;z-index:2}
-.hero-painting-title{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:1rem;color:var(–text-muted);letter-spacing:0.22em;margin-bottom:8px;opacity:0;animation:rise 1s ease 1.5s forwards}
-.hero-name{font-family:‘Cinzel’,serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:700;letter-spacing:0.1em;line-height:1;background:linear-gradient(135deg,var(–gold) 0%,var(–gold-deep) 50%,var(–gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:rise 1.2s ease 0.6s forwards}
-.hero-tagline{font-family:‘Cormorant Garamond’,serif;font-style:italic;font-size:clamp(1rem,2vw,1.3rem);color:var(–text-soft);letter-spacing:0.12em;margin-top:10px;opacity:0;animation:rise 1s ease 1s forwards}
-.scroll-cue{position:absolute;bottom:28px;right:56px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s ease 2s forwards}
+/* HERO — WATERCOLOR LOGO */
+.hero-logo-section{
+min-height:100vh;
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+text-align:center;
+position:relative;overflow:hidden;
+padding:100px 40px 80px;
+background:var(–ivory);
+}
+
+/* Watercolor cloud orbs */
+.wc-orb{position:absolute;border-radius:50%;filter:blur(55px);pointer-events:none;animation:orb-drift ease-in-out infinite alternate}
+.wc-1{width:420px;height:420px;background:radial-gradient(ellipse,rgba(1,119,117,0.28),transparent 70%);top:-80px;left:-60px;animation-duration:18s}
+.wc-2{width:380px;height:380px;background:radial-gradient(ellipse,rgba(218,161,55,0.22),transparent 70%);top:-40px;right:-40px;animation-duration:22s;animation-delay:4s}
+.wc-3{width:320px;height:320px;background:radial-gradient(ellipse,rgba(181,20,187,0.15),transparent 70%);bottom:10%;left:5%;animation-duration:16s;animation-delay:2s}
+.wc-4{width:280px;height:280px;background:radial-gradient(ellipse,rgba(150,138,207,0.18),transparent 70%);bottom:15%;right:8%;animation-duration:20s;animation-delay:6s}
+.wc-5{width:200px;height:200px;background:radial-gradient(ellipse,rgba(184,81,75,0.12),transparent 70%);top:30%;left:15%;animation-duration:14s;animation-delay:1s}
+.wc-6{width:250px;height:250px;background:radial-gradient(ellipse,rgba(42,77,155,0.1),transparent 70%);top:25%;right:12%;animation-duration:17s;animation-delay:8s}
+
+/* Gold glitter swirl */
+.wc-glitter{
+position:absolute;
+width:70%;height:70%;
+top:15%;left:15%;
+background:
+radial-gradient(ellipse at 70% 25%, rgba(218,161,55,0.35) 0%, transparent 35%),
+radial-gradient(ellipse at 80% 70%, rgba(218,161,55,0.2) 0%, transparent 25%),
+radial-gradient(ellipse at 20% 60%, rgba(218,161,55,0.15) 0%, transparent 30%);
+border-radius:50%;
+filter:blur(8px);
+pointer-events:none;
+animation:glitter-pulse 6s ease-in-out infinite alternate;
+}
+@keyframes glitter-pulse{0%{opacity:0.6;transform:rotate(-3deg) scale(0.97)}100%{opacity:1;transform:rotate(3deg) scale(1.03)}}
+@keyframes orb-drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(20px,14px) scale(1.08)}}
+
+/* Logo text */
+.hero-logo-wrap{position:relative;z-index:2;margin-bottom:28px;opacity:0;animation:riseIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.4s forwards}
+.hero-script{
+font-family:‘Cormorant Garamond’,serif;
+font-style:italic;
+font-size:clamp(1.8rem,5vw,4rem);
+font-weight:400;
+color:var(–gold);
+text-shadow:0 2px 12px rgba(180,120,10,0.35),0 0 40px rgba(218,161,55,0.25);
+letter-spacing:0.06em;
+line-height:1;
+display:block;
+}
+.hero-main-name{
+font-family:‘Cinzel’,serif;
+font-size:clamp(3rem,10vw,8rem);
+font-weight:700;
+letter-spacing:0.12em;
+line-height:0.95;
+display:block;
+background:linear-gradient(135deg,#E8C048 0%,#DAA137 25%,#F0D070 50%,#C08820 75%,#DAA137 100%);
+-webkit-background-clip:text;background-clip:text;color:transparent;
+filter:drop-shadow(0 3px 10px rgba(180,130,20,0.3));
+}
+.hero-tagline-main{
+font-family:‘Cormorant Garamond’,serif;
+font-style:italic;
+font-size:clamp(0.9rem,2vw,1.4rem);
+letter-spacing:0.38em;
+color:var(–text-muted);
+text-transform:uppercase;
+margin-top:18px;
+opacity:0;
+animation:riseIn 1s ease 1.2s forwards;
+position:relative;z-index:2;
+}
+.hero-sub-text{
+font-size:0.72rem;
+letter-spacing:0.3em;
+color:var(–emerald);
+text-transform:uppercase;
+margin-top:8px;
+opacity:0;
+animation:riseIn 1s ease 1.5s forwards;
+position:relative;z-index:2;
+}
+.hero-cta-row{
+display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+margin-top:44px;
+opacity:0;animation:riseIn 1s ease 1.8s forwards;
+position:relative;z-index:2;
+}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s ease 2.4s forwards}
 .scroll-cue span{font-size:0.52rem;letter-spacing:0.45em;color:var(–text-muted);text-transform:uppercase}
 .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(–gold),transparent);animation:pulse 2.5s ease-in-out infinite}
 
@@ -273,19 +354,37 @@ footer{padding:44px 28px 28px}
 
 <section id="home">
 
-  <!-- HERO: Pinked -->
+  <!-- HERO: Watercolor Logo -->
 
-  <div class="hero-painting">
-    <img src="https://drive.google.com/thumbnail?id=1eF3FnR0hlZ5f3qyO84AmZYgUbcCUIuQh&sz=w1600" alt="Pinked — Kasmira Seymour"/>
-    <div class="hero-text">
-      <p class="hero-painting-title">Pinked · Original Painting</p>
-      <h1 class="hero-name">KASMIRA</h1>
-      <p class="hero-tagline">Where Art Meets Soul</p>
-    </div>
-    <div class="scroll-cue">
-      <div class="scroll-line"></div>
-      <span>scroll</span>
-    </div>
+  <div class="hero-logo-section">
+    <div class="wc-orb wc-1"></div>
+    <div class="wc-orb wc-2"></div>
+    <div class="wc-orb wc-3"></div>
+    <div class="wc-orb wc-4"></div>
+    <div class="wc-orb wc-5"></div>
+    <div class="wc-orb wc-6"></div>
+    <div class="wc-glitter"></div>
+
+```
+<div class="hero-logo-wrap">
+  <span class="hero-script">Mind of</span>
+  <span class="hero-main-name">KASMIRA</span>
+</div>
+
+<p class="hero-tagline-main">Where Art Meets Soul</p>
+<p class="hero-sub-text">Visual Artist · Poet · Educator · Delaware</p>
+
+<div class="hero-cta-row">
+  <a href="#about" class="btn-primary">Discover the Work</a>
+  <a href="https://shop.kasmiratheartist.com" target="_blank" class="btn-gold">Shop Prints</a>
+</div>
+
+<div class="scroll-cue">
+  <div class="scroll-line"></div>
+  <span>scroll</span>
+</div>
+```
+
   </div>
 
   <!-- Full: Intuition -->
@@ -417,11 +516,11 @@ footer{padding:44px 28px 28px}
         </div>
         <div class="pillar" onclick="togglePillar(this)">
           <div class="pillar-head"><span class="pillar-name">The Practice</span><span class="pillar-icon">+</span></div>
-          <div class="pillar-body"><p>Original paintings available as instant digital downloads — museum-quality files, print and hang in minutes. Originals available upon request.</p></div>
+          <div class="pillar-body"><p>Original prints available as instant digital downloads. Original paintings sold by request only.</p><a href="https://kasmiratheartist.substack.com/subscribe" target="_blank" style="display:inline-block;margin-top:14px;padding:10px 24px;background:var(--emerald);color:white;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:background 0.3s" onmouseover="this.style.background='#015F5E'" onmouseout="this.style.background='var(--emerald)'">Become a Collector</a></div>
         </div>
         <div class="pillar" onclick="togglePillar(this)">
           <div class="pillar-head"><span class="pillar-name">The Strategy</span><span class="pillar-icon">+</span></div>
-          <div class="pillar-body"><p>Storytelling for brands, institutions, and changemakers — where creative vision meets purposeful collaboration. State recognized and available for licensing, residencies, exhibitions, and brand partnerships.</p></div>
+          <div class="pillar-body"><p>Storytelling for brands, institutions, and changemakers where creative vision meets purposeful collaboration. State recognized and available for licensing, residencies, exhibitions, and brand partnerships.</p></div>
         </div>
         <div class="about-btns">
           <a href="#contact" class="btn-primary">Work With Me</a>
@@ -441,39 +540,25 @@ footer{padding:44px 28px 28px}
         <span class="eyebrow">The Voice</span>
         <h2 class="section-title">A Letter to<br/>the Universe</h2>
         <div class="gold-rule"></div>
-        <p class="poetry-body"><em>Poetry Vault — Season Two</em> is live. Seven turtle archetypes, seven chakras, one invitation to come home to yourself. A portal into the interior landscape of healing through the written word.</p>
+        <p class="poetry-body"><em>A Letter to the Universe: Poetry Vault</em> — Season Two is live. Seven turtle archetypes, seven chakras, one invitation to come home to yourself.</p>
         <div class="platform-row">
           <a href="https://kasmiratheartist.substack.com" target="_blank" class="pill">Substack</a>
-          <a href="#" class="pill">Spotify</a>
-          <a href="#" class="pill">Apple Podcasts</a>
+          <a href="https://open.spotify.com/show/0IhMSvxScaF2tzixv2Ud5h?si=p3DWWn4eTS6aoIffP12fOQ" target="_blank" class="pill">Spotify</a>
+          <a href="https://podcasts.apple.com/us/podcast/letter-to-the-universe-poetry-vault/id1794667957" target="_blank" class="pill">Apple Podcasts</a>
         </div>
+        <p style="margin-top:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--text-muted)">Listen wherever you get your podcasts.</p>
       </div>
       <div class="reveal rd2">
         <div class="cover-wrap">
-          <img class="cover-img" src="https://drive.google.com/thumbnail?id=1GVxPY-otPKC5jl0rdyASUO5YimlH-Cxv&sz=w600" alt="A Letter To The Universe: Poetry Vault Season Two"/>
+          <img class="cover-img" src="https://drive.google.com/thumbnail?id=1Uf0wnMmrVvfLKaoNrd2-YUwLkbFiQhIb&sz=w600" alt="A Letter To The Universe: Poetry Vault Season Two"/>
           <p class="credit-line">Cover art — Nicolás Cala & Jisu Ryu</p>
         </div>
       </div>
     </div>
 
 ```
-<div class="turtle-section reveal">
-  <span class="eyebrow" style="text-align:center;display:block">Turtle Reflections</span>
-  <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:600;color:var(--emerald);text-align:center;letter-spacing:0.1em">Seven Chakras · Seven Turtles · Seven Letters</h3>
-  <div class="turtle-grid">
-    <div class="t-card morris"><span class="t-glyph">🐢</span><span class="t-name">Morris</span><span class="t-species">The Tortoise</span><span class="t-chakra">Root · Red</span></div>
-    <div class="t-card bach"><span class="t-glyph">🐢</span><span class="t-name">Bach</span><span class="t-species">The Box Turtle</span><span class="t-chakra">Sacral · Orange</span></div>
-    <div class="t-card absurdle"><span class="t-glyph">🐢</span><span class="t-name">Absurdle</span><span class="t-species">The Nonsensical Turtle</span><span class="t-chakra">Solar Plexus · Yellow</span></div>
-    <div class="t-card purdle"><span class="t-glyph">🐢</span><span class="t-name">Purdle</span><span class="t-species">The Pretty Turtle</span><span class="t-chakra">Heart · Green</span></div>
-    <div class="t-card wurdle"><span class="t-glyph">🐢</span><span class="t-name">Wurdle</span><span class="t-species">The Hurdle-Jumping Turtle</span><span class="t-chakra">Throat · Blue</span></div>
-    <div class="t-card fertile"><span class="t-glyph">🐢</span><span class="t-name">Fertile</span><span class="t-species">The Abundant Turtle</span><span class="t-chakra">Third Eye · Indigo</span></div>
-    <div class="t-card yadira"><span class="t-glyph">🐢</span><span class="t-name">Yadira</span><span class="t-species">The Red Ear Turtle</span><span class="t-chakra">Crown · Violet</span></div>
-  </div>
-</div>
-
 <div style="text-align:center;margin-top:52px" class="reveal">
-  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--text-muted);margin-bottom:20px">Poetry as portal. Come home to yourself.</p>
-  <a href="https://kasmiratheartist.substack.com" target="_blank" class="btn-outline">Read the Poetry Vault</a>
+  <a href="https://kasmiratheartist.substack.com" target="_blank" class="btn-outline">Listen to the Poetry Vault</a>
 </div>
 ```
 
