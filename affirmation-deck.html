@@ -71,9 +71,9 @@ body::before{content:"";position:fixed;inset:0;background-image:url("data:image/
 .card-cat-label{font-family:"Cinzel",serif;font-size:0.5rem;letter-spacing:0.38em;text-transform:uppercase;margin-bottom:3px}
 .card-mok-label{font-style:italic;font-size:0.66rem;color:rgba(249,246,240,0.35)}
 .card-tap{font-size:0.52rem;letter-spacing:0.28em;color:rgba(249,246,240,0.25);text-transform:uppercase;margin-top:5px}
-.card-back{transform:rotateY(180deg);background:var(--black-card);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 22px;text-align:center}
+.card-back{transform:rotateY(180deg);background:var(--black-card);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 18px;text-align:center;overflow:hidden}
 .card-back-glow{position:absolute;inset:0;pointer-events:none}
-.card-affirmation{font-style:normal;font-family:"Libre Baskerville",serif;font-size:1.9rem;line-height:1.65;color:var(--cream);margin-bottom:18px;position:relative;z-index:1}
+.card-affirmation{font-style:normal;font-family:"Libre Baskerville",serif;font-size:1.35rem;line-height:1.72;color:var(--cream);margin-bottom:18px;position:relative;z-index:1}
 .card-meta{font-family:"Cinzel",serif;font-size:0.46rem;letter-spacing:0.3em;color:var(--text-muted);text-transform:uppercase;position:relative;z-index:1}
 .card-back-tap{font-size:0.5rem;letter-spacing:0.25em;color:var(--text-muted);text-transform:uppercase;margin-top:12px;position:relative;z-index:1}
 
@@ -446,7 +446,7 @@ function drawRandom(){
   document.getElementById('dailyMeta').textContent=c.c+' · '+c.n+' of '+CARDS.filter(x=>x.c===c.c).length;
   const dc=document.getElementById('dailyCard');
   applycat(dc,c.c);
-  if(dc.classList.contains('flipped'))dc.classList.remove('flipped');
+  dc.classList.remove('flipped');
   setGlow(document.getElementById('dailyGlow'),c.c);
 }
 
@@ -467,7 +467,7 @@ function renderBrowse(filter){
       </div></div>
     </div>`).join('');
 }
-function filterCards(f,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderBrowse(f);}
+function filterCards(f,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');if(typeof setBrowseCat==='function'){setBrowseCat(f,btn);}else{renderBrowse(f);}}
 
 let jIdx=0;
 function renderJourney(){
